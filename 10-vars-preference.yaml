@@ -1,9 +1,9 @@
 - name: variables to print
   hosts: web
-  vars: #play level, all tasks in this play have access to this
-    COURSE: "DevOps with AWS from play level"
-    TRAINER: "SivakumarReddy"
-    DURATION: "120HRS"
+  # vars: #play level, all tasks in this play have access to this
+  #   COURSE: "DevOps with AWS from play level"
+  #   TRAINER: "SivakumarReddy"
+  #   DURATION: "120HRS"
   # vars_files: #asking ansible to get files from source file 
   # - vars.yaml
   # vars_prompt:
