@@ -1,7 +1,7 @@
  - name: variables to print
    hosts: web
    vars_files: #play level, all tasks in this play have access to this
-  - vars.yaml
+   - vars.yaml
    tasks:
    - name: print the information
      ansible.builtin.debug:
