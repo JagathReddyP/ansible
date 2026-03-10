@@ -1,6 +1,6 @@
  - name: variables to print
    hosts: web
-   vars_files: #play level, all tasks in this play have access to this
+   vars_files: #asking ansible to get files from source file 
    - vars.yaml
    tasks:
    - name: print the information
