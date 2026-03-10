@@ -3,8 +3,8 @@
    vars: #play level, all tasks in this play have access to this
     COURSE: "DevOps with AWS"
     TRAINER: "SivakumarReddy"
-    Duration: "120HRS"
+    DURATION: "120HRS"
    tasks:
    - name: print the information
      ansible.builtin.debug:
-      msg: "Hi, Iam learning {{COURSE}}, duration is: {{Duration}}, and trainer {{TRAINER}} "
+      msg: "Hi, Iam learning {{COURSE}}, duration is: {{DURATION}}, and trainer {{TRAINER}} "
