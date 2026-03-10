@@ -12,7 +12,7 @@
     private: false #not confidential
   tasks:
   - name: print the information
-  vars:
-    COURSE: "DevOps with AWS from task level"
-  ansible.builtin.debug:
-    msg: "Hi I am learning {{COURSE}}"
+    vars:
+     COURSE: "DevOps with AWS from task level"
+    ansible.builtin.debug:
+      msg: "Hi I am learning {{COURSE}}"
