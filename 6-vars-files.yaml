@@ -1,9 +1,7 @@
  - name: variables to print
    hosts: web
-   vars: #play level, all tasks in this play have access to this
-    COURSE: "DevOps with AWS"
-    TRAINER: "SivakumarReddy"
-    Duration: "120HRS"
+   vars_files: #play level, all tasks in this play have access to this
+  - vars.yaml
    tasks:
    - name: print the information
      ansible.builtin.debug:
