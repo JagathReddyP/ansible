@@ -16,3 +16,12 @@
      #COURSE: "DevOps with AWS from task level"
     ansible.builtin.debug:
       msg: "Hi I am learning {{COURSE}}"
+
+#variable preference as follows
+#1 command line/args (superior)
+#2 Task level
+#3 Files
+#4 propt
+#5 play level
+#6 inventory
+# role based
