@@ -1,0 +1,12 @@
+- name: Create an expense user
+  hosts: web
+  become: yes
+  tasks:
+  - name: check user if exist or not
+    ansible.builtin.command: id expense
+    register: USER # it will store the output from above command
+
+  - name: print the user information
+    ansible.builtin.debug:
+     msg: "user in {{USER}}"
+     
