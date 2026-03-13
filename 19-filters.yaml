@@ -25,8 +25,18 @@
     ansible.builtin.debug:
      msg: " {{ numbers | unique }}"
 
-  -  name:
+  -  name: print the min and max number
      vars:
       numbers: [1,2,45,34,29,0]
      ansible.builtin.debug:
       msg: " Min: {{ numbers| min }}, Max: {{ numbers| max}}"
+
+  - name: convert map/dictionary to list
+    vars:
+     course: 
+      name: DevOps
+      duration: 120HRS
+      trainer: SivakumarReddy
+    ansible.builtin.debug:
+     msg: " {{course | dict2items }} "
+      
