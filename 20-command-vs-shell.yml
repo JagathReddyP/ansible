@@ -12,5 +12,5 @@
   become: yes
   tasks:
    - name: execute the command
-     ansible.builtin.command: ps -ef|grep ssh
+     ansible.builtin.shell: ps -ef|grep ssh
      register: output
