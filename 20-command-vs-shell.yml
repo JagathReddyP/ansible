@@ -14,3 +14,7 @@
    - name: execute the command
      ansible.builtin.shell: ps -ef|grep ssh
      register: output
+
+   - name: show the output
+     ansible.builtin.debug:
+        msg: "{{ output.stdout }}"
