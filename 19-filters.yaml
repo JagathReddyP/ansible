@@ -23,4 +23,4 @@
     vars:
      number: [1,2,3,45,46,3,2,1,6]
     ansible.builtin.debub:
-     msg: "{{ number | unique }}"
+     msg: " {{ number | unique }}"
