@@ -1,0 +1,6 @@
+- name: demo on filters
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  
