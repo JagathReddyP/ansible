@@ -3,4 +3,6 @@
   connection: local
   become: yes
   tasks:
-  
+  - name: print the default variables
+    ansible.builtin.debug:
+     msg: "Hello {{ course }}" 
