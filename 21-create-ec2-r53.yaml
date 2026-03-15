@@ -11,30 +11,30 @@
     - backend
     - frontend
   tasks:
-   - name: ansible to install boto3 and botocore
-     ansible.builtin.pip:
-      name:
-       - boto3
-       - botocore
+  - name: ansible to install boto3 and botocore
+    ansible.builtin.pip:
+     name:
+      - boto3
+      - botocore
      executable: pip3.9
 
-   - name: create ec2 instance
-     amazon.aws.ec2_instance:
-      name: "{{ item }}"
-      vpc_subnet_id: "{{subnet_id}}"
-      instance_type: "t3.micro"
-      security_group: "{{ sg_id }}"
-      image_id: "{{ ami_id }}"
-     loop: "{{ instances }}"
-     register: ec2_instances
+  - name: create ec2 instance
+    amazon.aws.ec2_instance:
+     name: "{{ item }}"
+     vpc_subnet_id: "{{subnet_id}}"
+     instance_type: "t3.micro"
+     security_group: "{{ sg_id }}"
+     image_id: "{{ ami_id }}"
+    loop: "{{ instances }}"
+    register: ec2_instances
 
-   - name: print the output
-     ansible.builtin.debug:
-      msg: " {{ ec2_instances }}"
+  - name: print the output
+    ansible.builtin.debug:
+     msg: " {{ ec2_instances }}"
 
 # private ip address
-   - name: create private r53 records
-     amazon.aws.route53:
+  - name: create private r53 records
+    amazon.aws.route53:
       state: present
       zone: "{{ zone }}"
       record: "{{ item.item }}.{{ zone }}" #mysql.jagathlearn.art
@@ -43,11 +43,11 @@
       value: "{{ item.instances[0].private_ip_address }}"
       wait: True
       overwrite: true
-     loop: "{{ ec2_instances.results }}"
+    loop: "{{ ec2_instances.results }}"
 
  # we only create public ip for frontend
-   - name: create r53 public record for frontend
-     amazon.aws.route53:
+  - name: create r53 public record for frontend
+    amazon.aws.route53:
       state: present
       zone: "{{ zone }}"
       record: "{{ zone }}" #jagathlearn.art
@@ -56,5 +56,5 @@
       value: "{{ item.instances[0].public_ip_address }}"
       wait: True
       overwrite: true
-     loop: "{{ ec2_instances.results }}"
-     when: item.item == "frontend" 
+    loop: "{{ ec2_instances.results }}"
+    when: item.item == "frontend" 
