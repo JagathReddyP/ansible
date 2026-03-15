@@ -9,7 +9,16 @@
     - mysql
     - backend
     - frontend
+    zone: jagathlearn.art
+    
   tasks:
+  - name: ansible to install boto3 and botocore
+    ansible.builtin.pip:
+    name:
+    - boto3
+    - botocore
+    executable: pip3.9
+
   - name: create ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
@@ -24,4 +33,29 @@
     ansible.builtin.debug:
      msg: " {{ ec2_instances }}"
 
+# private ip address
+  - name: create private r53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}" #mysql.jagathlearn.art
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].private_ip_address }}"
+      wait: True
+      overwrite: true
+    loop: "{{ ec2_instances.results }}"
 
+ # we only create public ip for frontend
+  - name: create r53 public record for frontend
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ zone }}" #jagathlearn.art
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip_address }}"
+      wait: True
+      overwrite: true
+    loop: "{{ ec2_instances.results }}"
+    when: item.item == "frontend" 
