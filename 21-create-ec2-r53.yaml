@@ -4,12 +4,13 @@
   vars:
     subnet_id: "subnet-080356a988c290184"
     sg_id: "sg-04ba9fcd3b0e49e39"
-    ami_id: "ami-0220d79f3f480ecf5" 
+    ami_id: "ami-0220d79f3f480ecf5"
+    zone: jagathlearn.art 
     instances:
     - mysql
     - backend
     - frontend
-    zone: jagathlearn.art
+    
     
   tasks:
   - name: ansible to install boto3 and botocore
