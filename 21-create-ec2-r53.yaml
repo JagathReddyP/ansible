@@ -2,7 +2,7 @@
   hosts: local
   connection: local #we dont need become:yes because we are not installing anything we are just connecting
   vars:
-    subnet_id: "subnet-080356a988c290184"
+    subnet_id: "subnet-05814c8276fc7db7e"
     sg_id: "sg-04ba9fcd3b0e49e39"
     ami_id: "ami-0220d79f3f480ecf5"
     zone: jagathlearn.art 
